@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from "https://deno.land/std@0.107.0/testing/asserts.ts";
-import BookService from "./book-service.ts"
-import BookRepositoryInterface from "../../interfaces/repository/book-repository.interface.ts"
-import Book from "../../domain/models/book.ts"
+import {BookService} from "./index.ts"
+import {BookRepositoryInterface} from "../../interfaces/repository/index.ts"
+import {Book} from "../../domain/models/index.ts"
 
 const mockRepositoryBuilder = (
 	find: (id?: number) => Book[] = () => [], 

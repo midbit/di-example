@@ -1,7 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
-import BookRepository from "./implementation/repository/book-repository.ts"
-import BookService from "./implementation/service/book-service.ts"
-import BookController from "./implementation/controller/book.controller.ts"
+import {BookRepository} from "./implementation/repository/index.ts"
+import {BookService} from "./implementation/service/index.ts"
+import {BookController} from "./implementation/controller/index.ts"
 
 const app = new Application();
 const repository = new BookRepository()
@@ -14,7 +14,7 @@ const globalFilter = async (context: any, next: Function) => {
 	}
 	catch(error) {
 		const err = error as Error
-		context.response.statusCode = 500
+		context.response.status = 500
 		context.response.body = err.message
 	}
 }

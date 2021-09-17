@@ -1,4 +1,4 @@
-import Book from "../../domain/models/book.ts"
+import {Book} from "../../domain/models/index.ts"
 
 class BookRepository {
 	private database = [

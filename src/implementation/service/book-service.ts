@@ -1,5 +1,5 @@
-import BookServiceInterface from "../../interfaces/service/book-service.interface.ts"
-import BookRepositoryInterface from "../../interfaces/repository/book-repository.interface.ts"
+import {BookServiceInterface} from "../../interfaces/service/index.ts"
+import {BookRepositoryInterface} from "../../interfaces/repository/index.ts"
 
 import Book from "../../domain/models/book.ts"
 class BookService implements BookServiceInterface {

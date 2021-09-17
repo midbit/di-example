@@ -1,6 +1,6 @@
 
-import BookControllerInterface from "../../interfaces/controller/book-controller.interface.ts"
-import BookServiceInterface from "../../interfaces/service/book-service.interface.ts"
+import {BookControllerInterface} from "../../interfaces/controller/index.ts"
+import {BookServiceInterface} from "../../interfaces/service/index.ts"
 
 class BookController implements BookControllerInterface {
 	constructor(private readonly service: BookServiceInterface){}
