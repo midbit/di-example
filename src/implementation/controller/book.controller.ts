@@ -4,19 +4,19 @@ import {BookServiceInterface} from "../../interfaces/service/index.ts"
 
 class BookController implements BookControllerInterface {
 	constructor(private readonly service: BookServiceInterface){}
-	browse(context: any): void {
-		const books = this.service.browse()
+	async browse(context: any): Promise<void> {
+		const books = await this.service.browse()
 		context.response.body = books
 	}
-	return(context: any): void{
+	async return(context: any): Promise<void>{
 		const id = context.params.id
-		this.service.return(id)
+		await this.service.return(id)
 		context.response.body = "Successful"
 
 	}
-	borrow(context: any): void{
+	async borrow(context: any): Promise<void>{
 		const id = context.params.id
-		this.service.borrow(id)
+		await this.service.borrow(id)
 		context.response.body = "Successful"
 	}
 }

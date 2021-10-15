@@ -6,31 +6,32 @@ class BookService implements BookServiceInterface {
 
 	constructor(private readonly repository: BookRepositoryInterface){}
 	
-	borrow(id: number): void {
-		const book = this.repository.find(id)?.[0]
-		console.log(book)
+	async borrow(id: number): Promise<void> {
+		const books = await this.repository.find(id)
+		const book = books?.[0]
 		if(!book){
-			throw new Error("Book not found")
+			return Promise.reject(new Error("Book not found"))
 		}
 		if(!book.isAvailable) {
-			throw new Error("Book is not available")
+			return Promise.reject(new Error("Book is not available"))
 		}
-		this.repository.update(new Book(id, book.title, book.author, false))
+		await this.repository.update(new Book(id, book.title, book.author, false))
 	}
 
-	return(id: number): void {
-		const book = this.repository.find(id)?.[0]
+	async return(id: number): Promise<void> {
+		const books = await this.repository.find(id)
+		const book = books?.[0]
 		if(!book){
-			throw new Error("Book not found")
+			return Promise.reject(new Error("Book not found"))
 		}
 		if(book.isAvailable) {
-			throw new Error("Duplicated Book")
+			return Promise.reject(new Error("Duplicated Book"))
 		}
-		this.repository.update(new Book(id, book.title, book.author, true))
+		await this.repository.update(new Book(id, book.title, book.author, true))
 	}
 	
-	browse(): Book[] {
-		return this.repository.find()
+	async browse(): Promise<Book[]> {
+		return await this.repository.find()
 	}
 
 }
