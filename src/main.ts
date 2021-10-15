@@ -1,13 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts"
-import { Bson, MongoClient } from "https://deno.land/x/mongo@v0.26.0/mod.ts"
 import {BookRepository} from "./implementation/repository/index.ts"
 import {BookService} from "./implementation/service/index.ts"
 import {BookController} from "./implementation/controller/index.ts"
-
-
-const client = new MongoClient()
-await client.connect("mongodb://localhost:27017")
-const database = client.database("BokBokLibrary")
 
 const app = new Application();
 const repository = new BookRepository()
