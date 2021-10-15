@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak/mod.ts"
 import {BookRepository} from "./implementation/repository/index.ts"
 import {BookService} from "./implementation/service/index.ts"
 import {BookController} from "./implementation/controller/index.ts"
